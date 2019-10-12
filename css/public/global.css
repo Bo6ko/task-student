@@ -1,0 +1,238 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,300italic,400,700);
+/*	----------------------------------------------------------------
+*	HTML defaults
+*/
+html{background: #fff;}
+body{font-size:14px;line-height:13px;font-family: Roboto;margin: 0 auto!important;}
+input[type=checkbox]{border:0;}
+img{vertical-align:text-bottom;}
+sup{font-size:.6em;vertical-align:top;}
+
+a:link,a:visited{color:#0072CF;}
+a:hover,a:active{color:#000;}
+
+/*	----------------------------------------------------------------
+*	Useful classes
+*/
+.clear{clear:both;display:block;overflow:hidden;visibility:hidden;width:0;height:0;float:none;}
+.clear:after{clear:both;content:'.';display:block;height:0;visibility:hidden;}
+.upper {text-transform: uppercase;}
+.bold {font-weight: bold;}
+.tcenter{text-align: center;}
+.tleft{text-align: left;}
+.tright{text-align: right;}
+
+/*	================================================================
+*	block:	CONTENT
+*/
+
+#content {
+	margin-top: 30px;
+}
+.section{
+	margin: 20px 0px 20px 0px;
+	max-width: 1140px;
+	width: 100%;
+	margin: 0 auto;
+	}
+h1 {
+	font-size: 30px;
+	line-height: 30px;
+	margin: 15px 0px;
+}
+h2{
+	font-size: 20px;
+	display: inline-block;
+	margin-bottom: 17px;
+	font-weight: normal;
+}
+h3{
+	font-size: 18px;
+	margin: 7px 0px 6px;
+	font-weight: 600;
+}
+hr {
+	border-color: #d5d5d5;
+    opacity: 0.4;
+}
+.clear {
+	clear: both;
+}
+table.grid {
+	width:100%;
+}
+
+table.grid, th, td {
+	border-collapse: collapse;
+}
+
+table.grid th, table.grid td {
+	padding: 5px;
+	text-align: left;
+}
+
+table.grid tr:nth-child(even) {
+	background-color: #eee;
+}
+
+table.grid tr:nth-child(odd) {
+	background-color: #fff;
+}
+
+table.grid th {
+	background-color: black;
+	color: white;
+}
+
+table.grid .text-center {
+	text-align: center;
+}
+table.grid thead th {
+	border-color: black!important;
+}
+.section-result {
+	margin: 50px 0px 20px;
+}
+option {
+	height: 30px;
+    padding: 30px 0px;
+    line-height: 20px;
+    margin: 10px 0px;
+}
+.section-find-car option[value=select] {
+    display: none;
+}
+form.new-student .btn {
+	width: 100%;
+}
+.btn {
+    display: block;
+    margin: 35px 0px 20px!important;
+	padding: 8px 20px 8px 20px;
+    position: relative;
+}
+a.btn-create {
+	background: #e7e7e7;
+	border-color: #ffffff;
+	color: #454545;
+	padding: 12px 20px 12px 40px;
+	background-image: url(/../css/public/images/create.png);
+	background-repeat: no-repeat;
+	background-position: 14px 10px;
+	display: inline-block;
+}
+a.edit {
+	display: block;
+	width: 16px;
+	height: 16px;
+	background-image: url(/../css/public/images/update.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+a.delete {
+	display: block;
+	width: 16px;
+	height: 16px;
+	background-image: url(/../css/public/images/delete.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
+}
+.update-btn {
+	background: #e7e7e7;
+	border-color: #ffffff;
+	color: #454545;
+}
+input.btn {
+	margin-top: 20px;
+}
+form {
+	background-color: #f0f5f5;
+	padding: 20px 15px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	width: 50%;
+	margin: 0 auto;
+}
+form input[type="text"],
+form input[type="date"],
+form select {
+	width: 250px;
+	padding: 3px 10px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #ced4da;
+}
+form select {
+	width: 270px;
+}
+.form-element {
+	margin-bottom: 15px;
+}
+.form-label {
+	width: 250px;
+	display: inline-block;
+}
+.error {
+	color: red;
+	font-size: 20px;
+	line-height: 20px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid red;
+	padding: 10px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.success {
+	color: dodgerblue;
+	font-size: 20px;
+	line-height: 20px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid dodgerblue;
+	padding: 10px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.form-control {
+	width: 239px!important;
+}
+
+/**
+*   PAGINATION
+*/
+div.paginator {
+	margin: 45px 0px;
+	text-align: center;
+}
+
+div.paginator div.page_num {
+	display: inline-block;
+	background-color: #c2c2c2;
+	margin: 0px 10px 20px 0px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+div.paginator div.page_num.selected {
+	font-weight: bold;
+}
+
+div.paginator div.page_num a {
+	display: inline-block;
+	padding: 10px 15px;
+	color: #000000;
+}
+
+div.paginator div.page_num.selected a {
+	color: #0005ca;
+}
+
+
+
+

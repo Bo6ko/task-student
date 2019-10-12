@@ -1,0 +1,132 @@
+<div class="section">
+    <h1 class="tcenter">Update student:</h1>
+
+    <div class="tcenter" style="font-size: 22px;">
+        <a href="{$smarty.const.WEB_PATH}" class="btn">View student's information</a>
+    </div>
+
+    <form class="new-student" method="post" action="" onsubmit="return false;">
+
+        <div class="message" id="response"></div>
+
+        <div class="form-element">
+            <label class="form-label" for="student_firstname">First name: </label>
+            <input id="student_firstname" type="text" name="student_firstname" value="{if isset($student.student_firstname)}{$student.student_firstname|escape:'html'}{/if}" placeholder="First name" />
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="student_lastname">Last name: </label>
+            <input id="student_lastname" type="text" name="student_lastname" value="{if isset($student.student_lastname)}{$student.student_lastname|escape:'html'}{/if}" placeholder="Last name" />
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="student_email">Email: </label>
+            <input id="student_email" type="text" name="student_email" value="{if isset($student.student_email)}{$student.student_email|escape:'html'}{/if}" placeholder="Email" />
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="student_age">Age: </label>
+            <input id="student_age" type="text" name="student_age" value="{if isset($student.student_age)}{$student.student_age|escape:'html'}{/if}" placeholder="Age" />
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="student_phone">Phone: </label>
+            <input id="student_phone" type="text" name="student_phone" value="{if isset($student.student_phone)}{$student.student_phone|escape:'html'}{/if}" placeholder="Phone" />
+        </div>
+
+        <div class="form-element">
+            <label for="preferred_comunication" class="form-label">Preferred communication: </label>
+            <input id="preferred_comunication" type="radio" name="preferred_comunication" value="email" {if
+                   isset($student.preferred_comunication) && $student.preferred_comunication == 'email'}checked{/if} /> Email
+            <input type="radio" name="preferred_comunication" value="phone" {if isset($student.preferred_comunication)
+                   && $student.preferred_comunication == 'phone'}checked{/if}
+            /> Phone
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="english_level_id">English level: </label>
+            <select id="english_level_id" name="english_level_id">
+                <option value=""> - choose - </option>
+
+                {if isset($english_level_all) && is_array($english_level_all) && count($english_level_all) > 0 }
+                {foreach from=$english_level_all item=english_level}
+                <option value="{$english_level.english_level_id}" {if isset($student.english_level_id) && $student.english_level_id == $english_level.english_level_id }selected{/if }>{$english_level.english_level_name|escape:'html'}</option>
+                {/foreach}
+                {/if}
+
+            </select>
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="student_start_date">Start date: </label>
+            <input id="student_start_date" type="date" name="student_start_date" value="{if isset($student.student_start_date)}{$student.student_start_date|escape:'html'}{/if}">
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="student_skills">Technical Skills and Courses</label>
+            <textarea id="student_skills" name="student_skills" rows="4" cols="35">{if isset($student.student_skills)}{$student.student_skills|escape:'html'}{/if}</textarea>
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="student_presentation">Short Personal Presentation (e.g. reason for joining the
+                program)</label>
+            <textarea id="student_presentation" name="student_presentation" rows="4" cols="35">{if isset($student.student_presentation)}{$student.student_presentation|escape:'html'}{/if}</textarea>
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="study_from_home">Study from home</label>
+            <input id="study_from_home" type="checkbox" name="study_from_home" {if
+                   isset($student.study_from_home)}checked{/if} />
+        </div>
+
+        <input id="update-student" class="btn" type="submit" value="Update student" />
+
+    </form>
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+
+        $("#update-student").on('click',function(){
+
+            var response    = $("#response");
+
+            response.html('izprashtane na zaqvka...').removeClass("error").removeClass("success");
+
+            var button      = $(this);
+
+            var form          = button.parents('form');
+
+            var data          = form.serialize();
+
+            $.ajax({
+                url			: 'http://task-student.localhost/update_ajax/{$student.student_id}',
+                type		: "POST",
+                dataType	: "json",
+                data		: data,
+                success		: function( json ) {
+
+
+                    if ( json.status ) {
+                        // true
+                        response.addClass("success");
+                    }
+                    response.html( json.message );
+
+                    console.log(json);
+
+
+                },
+                error		: function(error) {
+                    console.log(error);
+                    console.log(error.responseText);
+                }
+            });
+        });
+
+    });
+
+</script>

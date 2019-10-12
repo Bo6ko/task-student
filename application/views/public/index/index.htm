@@ -1,0 +1,58 @@
+<div class="section">
+    <h1>Student`s list:</h1>
+
+    <a href="{$smarty.const.WEB_PATH}create" class="btn btn-create">Create</a>
+
+    <p>{$deleteStudent}</p>
+
+    <table class="grid" style="width: 100%; margin: 40px 0px;" border=1>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Phone</th>
+            <th>Preferred comunication</th>
+            <th>English level</th>
+            <th>Start date</th>
+            <th>Student skills</th>
+            <th>Student presentation</th>
+            <th>Study from home</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {foreach from=$students item=student}
+        <tr>
+            <td>{$student.student_id}</td>
+            <td>{$student.student_firstname}</td>
+            <td>{$student.student_lastname}</td>
+            <td>{$student.student_email}</td>
+            <td>{$student.student_age}</td>
+            <td>{$student.student_phone}</td>
+            <td>{$student.preferred_comunication}</td>
+            <td>{$student.english_level_name}</td>
+            <td>{$student.student_start_date}</td>
+            <td>{$student.student_skills}</td>
+            <td>{$student.student_presentation}</td>
+            <td>{if $student.study_from_home == 0}No{else}Yes{/if}</td>
+            <td style="text-align: center; color: red;">
+                <strong><a class="edit"
+                           href="{$smarty.const.WEB_PATH}update/{$student.student_id}"></a></strong>
+            </td>
+            <td style="text-align: center; color: red;">
+                <strong><a class="delete"
+                           href="{$smarty.const.WEB_PATH}delete/{$student.student_id}"></a></strong>
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+
+    {$data.links}
+
+</div>

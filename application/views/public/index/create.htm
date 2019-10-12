@@ -1,0 +1,88 @@
+<div class="section">
+    <h1 class="tcenter">Create a new student:</h1>
+
+    <div class="tcenter" style="font-size: 22px;">
+        <a href="{$smarty.const.WEB_PATH}" class="btn">View student's information</a>
+    </div>
+
+    <form class="new-student" method="post" action="">
+
+        {if isset($post) && is_array($post) && !empty($post) && count($post) > 0}
+            {$response.message}
+        {/if}
+
+        <div class="form-element">
+            <label class="form-label" for="student_firstname">First name: </label>
+            <input id="student_firstname" type="text" name="student_firstname" value="{if isset($post.student_firstname)}{$post.student_firstname|escape:'html'}{/if}" placeholder="First name" />
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="student_lastname">Last name: </label>
+            <input id="student_lastname" type="text" name="student_lastname" value="{if isset($post.student_lastname)}{$post.student_lastname|escape:'html'}{/if}" placeholder="Last name" />
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="student_email">Email: </label>
+            <input id="student_email" type="text" name="student_email" value="{if isset($post.student_email)}{$post.student_email|escape:'html'}{/if}" placeholder="Email" />
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="student_age">Age: </label>
+            <input id="student_age" type="text" name="student_age" value="{if isset($post.student_age)}{$post.student_age|escape:'html'}{/if}" placeholder="Age" />
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="student_phone">Phone: </label>
+            <input id="student_phone" type="text" name="student_phone" value="{if isset($post.student_phone)}{$post.student_phone|escape:'html'}{/if}" placeholder="Phone" />
+        </div>
+
+        <div class="form-element">
+            <label for="preferred_comunication" class="form-label">Preferred communication: </label>
+            <input id="preferred_comunication" type="radio" name="preferred_comunication" value="email" {if
+                   isset($post.preferred_comunication) && $post.preferred_comunication == 'email'}checked{/if} /> Email
+            <input type="radio" name="preferred_comunication" value="phone" {if isset($post.preferred_comunication)
+                   && $post.preferred_comunication == 'phone'}checked{/if}
+            /> Phone
+        </div>
+
+        <div class="form-element">
+        <label class="form-label" for="english_level_id">English level: </label>
+            <select id="english_level_id" name="english_level_id">
+                <option value=""> - choose - </option>
+
+                {if isset($english_level_all) && is_array($english_level_all) && count($english_level_all) > 0 }
+                    {foreach from=$english_level_all item=english_level}
+                        <option value="{$english_level.english_level_id}" {if isset($post.english_level_id) && $post.english_level_id == $english_level.english_level_id }selected{/if }>{$english_level.english_level_name|escape:'html'}</option>
+                    {/foreach}
+                {/if}
+
+            </select>
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="student_start_date">Start date: </label>
+            <input id="student_start_date" type="date" name="student_start_date" value="{if isset($post.student_start_date)}{$post.student_start_date|escape:'html'}{/if}">
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="student_skills">Technical Skills and Courses</label>
+            <textarea id="student_skills" name="student_skills" rows="4" cols="35">{if isset($post.student_skills)}{$post.student_skills|escape:'html'}{/if}</textarea>
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="student_presentation">Short Personal Presentation (e.g. reason for joining the
+                program)</label>
+            <textarea id="student_presentation" name="student_presentation" rows="4" cols="35">{if isset($post.student_presentation)}{$post.student_presentation|escape:'html'}{/if}</textarea>
+        </div>
+
+        <div class="form-element">
+            <label class="form-label" for="study_from_home">Study from home</label>
+            <input id="study_from_home" type="checkbox" name="study_from_home" {if
+                   isset($post.study_from_home)}checked{/if} />
+        </div>
+
+        <input class="btn" type="submit" value="Save" />
+
+    </form>
+
+</div>
